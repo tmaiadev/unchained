@@ -1,7 +1,7 @@
 const rl = @import("raylib");
 
-const virtual_w = 400;
-const virtual_h = 225;
+const virtual_w = 640;
+const virtual_h = 360;
 
 pub fn main() !void {
     rl.setConfigFlags(.{ .window_resizable = true });

@@ -1,5 +1,15 @@
-const std = @import("std");
+const rl = @import("raylib");
 
 pub fn main() void {
-    std.debug.print("Hello, world!\n", .{});
+    rl.initWindow(400, 225, "Unchained");
+    defer rl.closeWindow();
+
+    rl.setTargetFPS(60);
+
+    while (!rl.windowShouldClose()) {
+        rl.beginDrawing();
+        defer rl.endDrawing();
+
+        rl.clearBackground(rl.Color.black);
+    }
 }

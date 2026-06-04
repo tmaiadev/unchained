@@ -11,6 +11,15 @@ pub fn build(b: *std.Build) void {
     const raylib_mod = raylib_dep.module("raylib");
     const raylib_artifact = raylib_dep.artifact("raylib");
 
+    const engine_mod = b.createModule(.{
+        .root_source_file = b.path("src/engine/engine.zig"),
+        .target = target,
+        .optimize = optimize,
+        .imports = &.{
+            .{ .name = "raylib", .module = raylib_mod },
+        },
+    });
+
     const exe = b.addExecutable(.{
         .name = "unchained",
         .root_module = b.createModule(.{
@@ -19,6 +28,7 @@ pub fn build(b: *std.Build) void {
             .optimize = optimize,
             .imports = &.{
                 .{ .name = "raylib", .module = raylib_mod },
+                .{ .name = "engine", .module = engine_mod },
             },
         }),
     });

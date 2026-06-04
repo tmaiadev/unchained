@@ -1,4 +1,4 @@
-const engine = @import("./engine/engine.zig");
+const engine = @import("engine");
 const intro = @import("./game/scenes/intro.zig");
 
 pub fn main() !void {

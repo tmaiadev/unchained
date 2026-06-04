@@ -1,9 +1,9 @@
-const rl = @import("raylib");
+const engine = @import("engine");
 
 pub fn init() void {}
 
 pub fn update() void {}
 
 pub fn draw() void {
-    rl.drawText("Hello", 0, 0, 20, rl.Color.white);
+    engine.graphics.print("Hello, world!", 10, 10, .white);
 }

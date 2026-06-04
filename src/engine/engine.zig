@@ -1,4 +1,5 @@
 const rl = @import("raylib");
+pub const graphics = @import("graphics.zig");
 
 pub const WIDTH: u32 = 640;
 pub const HEIGHT: u32 = 360;

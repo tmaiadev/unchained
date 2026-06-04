@@ -1,4 +1,5 @@
 const rl = @import("raylib");
+pub const graphics = @import("graphics.zig");
 
 var cam_x: i32 = 0;
 var cam_y: i32 = 0;

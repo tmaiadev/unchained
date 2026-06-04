@@ -8,8 +8,12 @@ pub fn cls(color: rl.Color) void {
     rl.clearBackground(color);
 }
 
-pub fn print(text: [:0]const u8, x: i32, y: i32, color: rl.Color) void {
-    rl.drawText(text, x - cam_x, y - cam_y, 8, color);
+pub fn print(text: [:0]const u8, x: i32, y: i32, color: rl.Color, size: ?i32) void {
+    rl.drawText(text, x - cam_x, y - cam_y, size orelse 16, color);
+}
+
+pub fn measureText(text: [:0]const u8, size: i32) i32 {
+    return rl.measureText(text, size);
 }
 
 pub fn rect(x: i32, y: i32, w: i32, h: i32, color: rl.Color, fill: bool) void {

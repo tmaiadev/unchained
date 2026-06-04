@@ -1,27 +1,35 @@
 const rl = @import("raylib");
+const scene_intro = @import("./game/scenes/intro.zig");
 
 const virtual_w = 640;
 const virtual_h = 360;
 
 var canvas: rl.RenderTexture2D = undefined;
+const scene = scene_intro;
 
 fn init() !void {
     rl.setConfigFlags(.{ .window_resizable = true });
     rl.initWindow(virtual_w, virtual_h, "Unchained");
     rl.setTargetFPS(60);
+
     canvas = try rl.loadRenderTexture(virtual_w, virtual_h);
+
+    scene.init();
 }
 
 fn update() void {
     if (rl.isKeyPressed(.f11)) {
         rl.toggleFullscreen();
     }
+
+    scene.update();
 }
 
 fn draw() void {
     {
         rl.beginTextureMode(canvas);
         defer rl.endTextureMode();
+        scene.draw();
         rl.clearBackground(rl.Color.black);
     }
 

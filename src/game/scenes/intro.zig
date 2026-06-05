@@ -1,5 +1,6 @@
 const rl = @import("raylib");
 const bouncingball_scene = @import("./demos/bouncingball.zig");
+const controls_scene = @import("./demos/controls.zig");
 const engine = @import("engine");
 const g = engine.graphics;
 
@@ -22,6 +23,8 @@ pub fn update() void {
     if (rl.isKeyPressed(.enter)) {
         if (selected == 0) {
             engine.scene.init(bouncingball_scene);
+        } else if (selected == 1) {
+            engine.scene.init(controls_scene);
         }
     }
 }

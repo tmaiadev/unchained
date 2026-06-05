@@ -6,6 +6,7 @@ pub const WIDTH: u32 = 640;
 pub const HEIGHT: u32 = 360;
 
 pub var canvas: rl.RenderTexture2D = undefined;
+pub var should_quit: bool = false;
 
 fn draw() void {
     {
@@ -61,7 +62,7 @@ pub fn init(title: [:0]const u8) !void {
 
     canvas = try rl.loadRenderTexture(WIDTH, HEIGHT);
 
-    while (!rl.windowShouldClose()) {
+    while (!rl.windowShouldClose() and !should_quit) {
         update();
         draw();
     }

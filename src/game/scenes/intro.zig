@@ -9,6 +9,10 @@ var selected: usize = 0;
 pub fn init() void {}
 
 pub fn update() void {
+    if (rl.isKeyPressed(.escape)) {
+        engine.should_quit = true;
+        return;
+    }
     if (rl.isKeyPressed(.up)) {
         selected = if (selected == 0) items.len - 1 else selected - 1;
     }

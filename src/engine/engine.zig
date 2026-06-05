@@ -54,6 +54,7 @@ pub fn init(title: [:0]const u8) !void {
     rl.setConfigFlags(.{ .window_resizable = true });
     rl.initWindow(WIDTH, HEIGHT, title);
     rl.setTargetFPS(60);
+    rl.setExitKey(.null);
 
     defer rl.closeWindow();
     defer rl.unloadRenderTexture(canvas);

@@ -1,10 +1,12 @@
 const rl = @import("raylib");
 const bouncingball_scene = @import("./demos/bouncingball.zig");
+const controls_scene = @import("./demos/controls.zig");
+const camera_scene = @import("./demos/camera.zig");
 const platformer_scene = @import("./demos/platformer.zig");
 const engine = @import("engine");
 const g = engine.graphics;
 
-const items = [_][:0]const u8{ "Bouncing Ball", "Platformer", "Sprites", "Map" };
+const items = [_][:0]const u8{ "Bouncing Ball", "Controls", "Camera", "Platformer", "Sprites", "Map" };
 var selected: usize = 0;
 
 pub fn init() void {}
@@ -24,6 +26,10 @@ pub fn update() void {
         if (selected == 0) {
             engine.scene.init(bouncingball_scene);
         } else if (selected == 1) {
+            engine.scene.init(controls_scene);
+        } else if (selected == 2) {
+            engine.scene.init(camera_scene);
+        } else if (selected == 3) {
             engine.scene.init(platformer_scene);
         }
     }

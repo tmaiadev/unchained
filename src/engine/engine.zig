@@ -1,4 +1,5 @@
 const rl = @import("raylib");
+pub const scene = @import("scene.zig");
 pub const graphics = @import("graphics.zig");
 
 pub const WIDTH: u32 = 640;
@@ -6,12 +7,12 @@ pub const HEIGHT: u32 = 360;
 
 pub var canvas: rl.RenderTexture2D = undefined;
 
-fn draw(drawFn: fn () void) void {
+fn draw() void {
     {
         rl.beginTextureMode(canvas);
         defer rl.endTextureMode();
         rl.clearBackground(rl.Color.black);
-        drawFn();
+        scene.draw();
     }
 
     const w: f32 = @floatFromInt(WIDTH);
@@ -41,15 +42,15 @@ fn draw(drawFn: fn () void) void {
     }
 }
 
-fn update(updateFn: fn () void) void {
+fn update() void {
     if (rl.isKeyPressed(.f11)) {
         rl.toggleFullscreen();
     }
 
-    updateFn();
+    scene.update();
 }
 
-pub fn init(title: [:0]const u8, updateFn: fn () void, drawFn: fn () void) !void {
+pub fn init(title: [:0]const u8) !void {
     rl.setConfigFlags(.{ .window_resizable = true });
     rl.initWindow(WIDTH, HEIGHT, title);
     rl.setTargetFPS(60);
@@ -60,7 +61,7 @@ pub fn init(title: [:0]const u8, updateFn: fn () void, drawFn: fn () void) !void
     canvas = try rl.loadRenderTexture(WIDTH, HEIGHT);
 
     while (!rl.windowShouldClose()) {
-        update(updateFn);
-        draw(drawFn);
+        update();
+        draw();
     }
 }

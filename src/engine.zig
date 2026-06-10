@@ -1,6 +1,6 @@
 const rl = @import("raylib");
-pub const scene = @import("scene.zig");
-pub const graphics = @import("graphics.zig");
+pub const scene = @import("engine/scene.zig");
+pub const graphics = @import("engine/graphics.zig");
 
 pub const WIDTH: u32 = 640;
 pub const HEIGHT: u32 = 360;

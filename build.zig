@@ -12,7 +12,7 @@ pub fn build(b: *std.Build) void {
     const raylib_artifact = raylib_dep.artifact("raylib");
 
     const engine_mod = b.createModule(.{
-        .root_source_file = b.path("src/engine/engine.zig"),
+        .root_source_file = b.path("src/engine.zig"),
         .target = target,
         .optimize = optimize,
         .imports = &.{
